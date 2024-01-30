@@ -21,6 +21,15 @@ export default class Deck {
     return this.cards;
   }
 
+  public flipCard(index: number) {
+    const card = this.cards[index];
+    card.isFlipped = !card.isFlipped;
+  }
+
+  checkMatch(cardPosition: number, anotherCardPosition: number) {
+    return this.cards[cardPosition].id === this.cards[anotherCardPosition].id;
+  }
+
   private generateDeck(): void {
     let cards: Card[] = [];
     for (let i = 0; i < this.numberOfCards / 2; i++) {

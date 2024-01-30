@@ -35,4 +35,43 @@ describe("Deck", () => {
       expect(deck.getCards().every((card) => !card.isFlipped)).toBeTruthy();
     });
   });
+
+  describe("flipCard", () => {
+    let deck: Deck;
+    beforeEach(() => {
+      deck = Deck.createDeck();
+    });
+
+    it("should uncover a card if it was covered", async () => {
+      deck.flipCard(8);
+      expect(deck.getCards()[8].isFlipped).toBeTruthy();
+    });
+
+    it("should cover a card if it was uncovered", async () => {
+      deck.flipCard(8);
+      expect(deck.getCards()[8].isFlipped).toBeTruthy();
+      deck.flipCard(8);
+      expect(deck.getCards()[8].isFlipped).toBeFalsy();
+    });
+  });
+
+  describe("checkMatch", () => {
+    it("should return true if card id matches another card id", () => {
+      const deck = Deck.createDeck();
+      const firstCard = deck.getCards()[10];
+      const secondCard = deck
+        .getCards()
+        .findIndex((card) => card.id === firstCard.id);
+      expect(deck.checkMatch(10, secondCard)).toBeTruthy();
+    });
+
+    it("should return false if card id does not match another card id", () => {
+      const deck = Deck.createDeck();
+      const firstCard = deck.getCards()[10];
+      const secondCard = deck
+        .getCards()
+        .findIndex((card) => card.id !== firstCard.id);
+      expect(deck.checkMatch(10, secondCard)).toBeFalsy();
+    });
+  });
 });

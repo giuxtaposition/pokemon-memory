@@ -26,7 +26,7 @@ export default class Deck {
     card.isFlipped = !card.isFlipped;
   }
 
-  checkMatch(cardPosition: number, anotherCardPosition: number) {
+  public checkMatch(cardPosition: number, anotherCardPosition: number) {
     return this.cards[cardPosition].id === this.cards[anotherCardPosition].id;
   }
 

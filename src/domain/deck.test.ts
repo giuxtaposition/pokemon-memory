@@ -42,14 +42,10 @@ describe("Deck", () => {
       deck = Deck.createDeck();
     });
 
-    it("should uncover a card if it was covered", async () => {
+    it("should cover card if covered and cover if uncovered", async () => {
       deck.flipCard(8);
       expect(deck.getCards()[8].isFlipped).toBeTruthy();
-    });
 
-    it("should cover a card if it was uncovered", async () => {
-      deck.flipCard(8);
-      expect(deck.getCards()[8].isFlipped).toBeTruthy();
       deck.flipCard(8);
       expect(deck.getCards()[8].isFlipped).toBeFalsy();
     });
